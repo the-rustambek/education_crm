@@ -1,3 +1,4 @@
-const server = require("./src/server");
 require("dotenv").config();
-server(process.env.MODE);
+const server = require("./src/server");
+
+server(process.env.MODE); 

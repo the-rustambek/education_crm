@@ -2,9 +2,19 @@ const express = require ("express");
 const app =  express();
 const morgan = require("morgan");
 const routes =  require("./routes")
+const postgres = require("./modules/postgres");
+const databaseMiddleware = require("./middlewares/databaseMiddleware");
 
-function server(mode){
+async function server(mode){
     try {
+
+        app.listen(process.env.PORT || 80, () =>
+        console.log(`Server ready ${process.env.PORT || 80}`));
+
+        const db = await postgres();
+    
+        databaseMiddleware(db, app);
+
         app.use(express.json());
         app.use(express.urlencoded({
             extended:true
