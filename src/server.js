@@ -4,6 +4,8 @@ const morgan = require("morgan");
 const routes =  require("./routes")
 const postgres = require("./modules/postgres");
 const databaseMiddleware = require("./middlewares/databaseMiddleware");
+const customErrorMiddleware = require("./middlewares/customErrorMiddleware");
+const path = require("path");
 
 async function server(mode){
     try {
@@ -14,7 +16,7 @@ async function server(mode){
         const db = await postgres();
     
         databaseMiddleware(db, app);
-
+app.use(customErrorMiddleware);
         app.use(express.json());
         app.use(express.urlencoded({
             extended:true
