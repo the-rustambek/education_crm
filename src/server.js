@@ -15,8 +15,8 @@ async function server(mode){
 
         const db = await postgres();
     
-        databaseMiddleware(db, app);
-app.use(customErrorMiddleware);
+        await  databaseMiddleware(db, app);
+        app.use(customErrorMiddleware);
         app.use(express.json());
         app.use(express.urlencoded({
             extended:true
@@ -29,7 +29,7 @@ app.use(customErrorMiddleware);
         console.log("Server Error", error);
     }
     finally{
-routes(app);
+        routes(app);
     }
 }
 
