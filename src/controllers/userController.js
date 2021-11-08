@@ -10,7 +10,7 @@ module.exports =  class userController{
              
          }
     }
-    static async signUpController(req,res,next){
+    static async createUserController(req,res,next){
         try {
             
         } catch (error) {
