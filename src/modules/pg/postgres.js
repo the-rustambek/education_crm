@@ -17,7 +17,7 @@ module.exports = async  function postgres(){
         db.sessions = await sessionModel(sequelize,Sequelize);
 await relations(db);
 await init(db);
-await sequelize.sync();
+await sequelize.sync({force: false});
         return db;
         
     } catch (error) {

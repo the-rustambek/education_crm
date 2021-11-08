@@ -60,7 +60,7 @@ module.exports = class userController {
 
     static async createUserController(req, res, next) {
         try {
-            const data = await signUpValidation(req.body,res.error);
+            const data = await signUpValidation(req.body, res.error);
 
             const user = await req.db.users.create({
                 user_name: data.name,
@@ -78,10 +78,10 @@ module.exports = class userController {
         } catch (error) 
         {
             console.log(error);
-            if(error.message =="Validation error"){
-                error.errorCode = 400;
-                error.message = "Username already exists"
-            }
+            // if(error.message =="Validation error"){
+            //     error.errorCode = 400;
+            //     error.message = "Username already exists"
+            // }
             next(error);
         }
     }
