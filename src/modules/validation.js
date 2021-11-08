@@ -15,7 +15,7 @@ module.exports = class Validations {
 		return await joi
 		.object({
 			username: joi.string().regex(/^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$/).error(new Error("Username is invalid")),
-			password: joi.string().required().max(128).min(6).error(new Error("Password is invalid")),
+			password: joi.string().required().max(128).min(5).error(new Error("Password is invalid")),
 			
 		}).validateAsync(data);
 	}
