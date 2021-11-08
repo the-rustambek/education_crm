@@ -1,4 +1,4 @@
-module.exports =async (sequelize, Sequelize) =>{
+module.exports = async (sequelize, Sequelize) =>{
    return await sequelize.define("users",{
         user_id:{
             type: Sequelize.UUID,
@@ -17,7 +17,7 @@ module.exports =async (sequelize, Sequelize) =>{
             lowercase:true,
         },
         user_password:{
-            type:Sequelize.STRING(32),
+            type:Sequelize.STRING(64),
             allowNull:false,
         },
         user_gender:{

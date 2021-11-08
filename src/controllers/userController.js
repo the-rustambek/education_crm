@@ -1,8 +1,9 @@
-const errorHandler = require("../helpers/errorHandler");
+
 const {
-    signInValidation
+    signInValidation, signUpValidation
 } = require("../modules/validation");
 const {createToken} =  require("../modules/jwt");
+const {generateHash} = require("../modules/bcrypt")
 
 module.exports = class userController {
     static async signInController(req, res, next) {
@@ -44,8 +45,8 @@ module.exports = class userController {
                 message: "Token created succesfully",
                 data:{
                     token,
-                }
-            })
+                },
+            });
             
             
             // console.log(token)
@@ -54,9 +55,20 @@ module.exports = class userController {
 
         }
     }
+
+
+
     static async createUserController(req, res, next) {
         try {
+            const data = await signUpValidation(req.body,res.error);
 
+            const user = await req.db.users.create({
+                user_name:data.name,
+                user_password: await generateHash(data.password),
+                user_gender:data.gender,
+                user_username: data.username,
+            });
+            console.log(user)
         } catch (error) {
             next(error);
         }
