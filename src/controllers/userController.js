@@ -78,10 +78,10 @@ module.exports = class userController {
         } catch (error) 
         {
             console.log(error);
-            // if(error.message =="Validation error"){
-            //     error.errorCode = 400;
-            //     error.message = "Username already exists"
-            // }
+            if(error.message =="Validation error"){
+                error.errorCode = 400;
+                error.message = "Username already exists"
+            }
             next(error);
         }
     }
