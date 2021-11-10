@@ -2,7 +2,7 @@
 
  module.exports.createToken =   function(user){
      return jwt.sign(user, process.env.JWT_SECRET,{
-         expiresIn: "1d",
+         expiresIn: "90d",
      });
  };
 
