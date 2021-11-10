@@ -12,7 +12,6 @@ module.exports = async function permissionMiddleware(req,res,next){
 
         // console.log(permissions);
         req.user_permissions = permissions;
-
         next();
     } catch (error) {
         next(error);
