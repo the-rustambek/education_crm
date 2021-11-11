@@ -92,8 +92,25 @@ module.exports = class userController {
 
 static async userGetController(req,res,next) {
     try {
+
+        permissionChecker("admin", req.user_permissions, res.error);
+
+        const page =  req.params.page ? req.params.page -1 : 0;;
+        const limit = req.params.limit || 15;
+
+        const users = await req.db.users.findAll({
+            attributes: [
+                "user_id",
+                "user_name",
+                "user_username",
+                "user_gender"
+            ],
+            raw:true,
+            limit: limit,
+            offset: page * 15,
+        });
     } catch (error) {
-        
+        next(error);
     }
 }
 
