@@ -89,4 +89,13 @@ module.exports = class userController {
             next(error);
         }
     }
+
+static async userGetController(req,res,next) {
+    try {
+        
+    } catch (error) {
+        
+    }
+}
+
 }

@@ -1,9 +1,10 @@
 module.exports = function permissionChecker(
     permission_name,
-    permissions, error
+    permissions,
+     error
 )
 {
-    console.log(permissions)
+    // console.log(permissions)
     let permission = permissions.find((x) =>
         x["permission.permission_name"]  == permission_name
     );
