@@ -92,7 +92,6 @@ module.exports = class userController {
 
 static async userGetController(req,res,next) {
     try {
-        
     } catch (error) {
         
     }
