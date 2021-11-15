@@ -97,6 +97,7 @@ static async userGetController(req,res,next) {
 
         const page =  req.query.page ? req.query.page -1 : 0;;
         const limit = req.query.limit || 15;
+        const order = req.query.order == "DESC" ? "DESC" : "ASC" 
 
         const users = await req.db.users.findAll({
             attributes: [
