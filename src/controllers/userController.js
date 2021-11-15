@@ -108,7 +108,18 @@ static async userGetController(req,res,next) {
             raw:true,
             limit: limit,
             offset: page * 15,
+            order: [["createdAt", "DESC"]],
         });
+
+        res.status(200).json({
+            ok:true,
+            message: "Users list",
+            data: {
+                users,
+            },
+        });
+
+
     } catch (error) {
         next(error);
     }
