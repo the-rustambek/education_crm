@@ -95,8 +95,8 @@ static async userGetController(req,res,next) {
 
         permissionChecker("admin", req.user_permissions, res.error);
 
-        const page =  req.params.page ? req.params.page -1 : 0;;
-        const limit = req.params.limit || 15;
+        const page =  req.query.page ? req.query.page -1 : 0;;
+        const limit = req.query.limit || 15;
 
         const users = await req.db.users.findAll({
             attributes: [
@@ -108,7 +108,7 @@ static async userGetController(req,res,next) {
             raw:true,
             limit: limit,
             offset: page * 15,
-            order: [["createdAt", "DESC"]],
+            order: [["createdAt", order]],
         });
 
         res.status(200).json({
