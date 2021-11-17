@@ -82,11 +82,20 @@ static async teacherUpdatePutController(req,res,next){
 
             const teachers = await req.db.teachers.findAll({
                 raw:true,
+                include:[
+                    {
+                        model:req.db.users,
+                        attributes:{
+                            exclude: ["user_password"]
+                        }
+                    }
+                ]
             });
             // console.log(teachers);
             res.json({
                 data:teachers
             });
+
         } catch (error) {
             next(error);
         } 
