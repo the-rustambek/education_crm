@@ -85,13 +85,14 @@ static async teacherUpdatePutController(req,res,next){
                 include:[
                     {
                         model:req.db.users,
+
                         attributes:{
                             exclude: ["user_password"]
                         }
                     }
                 ]
             });
-            // console.log(teachers);
+            console.log(teachers);
             res.json({
                 data:teachers
             });
