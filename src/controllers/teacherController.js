@@ -50,7 +50,7 @@ static async teacherUpdatePutController(req,res,next){
             req.body,
             res.error
         );
-         await req.db.teachers.updateOne(
+         await req.db.teachers.update(
           
         {  
             user_id: data.user_id,
@@ -80,8 +80,13 @@ static async teacherUpdatePutController(req,res,next){
             const limit = req.query.limit || 15;
             const offset = req.query.offset - 1 || 0;
 
-            const teachers = await req.db.teachers.findAll();
-            console.log(teachers);
+            const teachers = await req.db.teachers.findAll({
+                raw:true,
+            });
+            // console.log(teachers);
+            res.json({
+                data:teachers
+            });
         } catch (error) {
             next(error);
         } 
