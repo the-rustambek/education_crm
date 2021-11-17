@@ -9,7 +9,7 @@ userRouter.post("/sign_in", signInController)
 userRouter.post("/account",[authMiddleware,permissionMiddleware],createUserController)
 
 
-userRouter.get("/",[authMiddleware,permissionMiddleware], userGetController)
+userRouter.get("/",[permissionMiddleware], userGetController)
 
 
 
