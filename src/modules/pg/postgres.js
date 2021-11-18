@@ -21,6 +21,7 @@ module.exports = async  function postgres(){
         db.permissions = await permissionModel(sequelize,Sequelize);
         db.user_permissions = await userPermissionModel(sequelize,Sequelize);
         db.teachers = await teachersModel(sequelize, Sequelize);
+      
         await relations(db);
         await init(db);
         await sequelize.sync({force:false})

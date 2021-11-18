@@ -26,12 +26,10 @@ module.exports = class Validations {
 
 	static async addTeacherValidation(data, customError) {
 		return await joi
-			.object({
-				user_id: joi
-					.string()
-					.uuid()
-					.required()
-					.error(new customError(400, "User id is invalid")),
+		.object({
+			user_id: joi.string().uuid()
+				.required()
+				.error(new customError(400, "User id is invalid")),
 				phone: joi
 					.string()
 					.required()

@@ -1,8 +1,9 @@
 
+    
 module.exports = async (sequelize, Sequelize) =>{
     return await sequelize.define("teachers", {
         teacher_id:{
-            type:Sequelize.UUID,
+            type: Sequelize.UUID,
             defaultValue:Sequelize.UUIDV4,
             primaryKey:true,
             allowNull: false,
