@@ -6,7 +6,7 @@ module.exports = class courseController{
         try {
             permissionChecker("admin", req.user_permissions, res.error);
 const photo = req?.files?.photo;
-console.log(photo);
+// console.log(photo);
             const data = courseCreateValidation(req.body,res.error);
             console.log(data);
         } catch (error) {

@@ -16,6 +16,7 @@ async function server(mode){
         const db = await postgres();
     
         await  databaseMiddleware(db, app);
+        
         app.use(customErrorMiddleware);
         app.use(express.json());
         app.use(express.urlencoded({
