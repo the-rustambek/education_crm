@@ -75,7 +75,6 @@ module.exports = class teacherController {
 		try {
 			const limit = req.query.limit || 15;
 			const offset = req.query.offset - 1 || 0;
-
 			const teachers = await req.db.teachers.findAll({
 				raw: true,
 				include: [
