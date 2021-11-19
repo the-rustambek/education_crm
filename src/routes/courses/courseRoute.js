@@ -2,10 +2,15 @@ const { courseCreatePostController } = require("../../controllers/courseControll
 const authMiddleware = require("../../middlewares/authMiddleware");
 const permissionMiddleware = require("../../middlewares/permissionMiddleware");
 
+const expressFileUploadMiddleware = require("express-fileupload");
+
 const courseRoute = require("express").Router();
 
 courseRoute.use([authMiddleware,permissionMiddleware]);
 
-courseRoute.post("/",courseCreatePostController);
+courseRoute.post("/",expressFileUploadMiddleware({
+    abortOnLimit:true,
+    safeFileNames:true,
+}),courseCreatePostController);
 
 module.exports =  courseRoute;
