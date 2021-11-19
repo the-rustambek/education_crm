@@ -22,7 +22,7 @@ module.exports = async (sequelize, Sequelize) =>{
         course_photo:{
             type: Sequelize.STRING,
             allowNull:true,
-        }
+        },
 
     })
 }
