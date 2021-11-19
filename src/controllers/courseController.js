@@ -149,4 +149,31 @@ static async courseUpdatePutController(req, res, next) {
 }
 
 
+static async courseGetOneController(req,res,next){
+    try {
+        const course_id =  req.params.course_id;
+
+        const course = await req.db.courses.findOne({
+            where:{
+                course_id,
+            },
+            raw:true,
+        });
+
+        if(!course) throw new res.error(404,"Course not found");
+
+        res.status(200).json({
+            ok:true,
+            message:"Ok",
+            data:{
+                course
+            }
+        })
+    } catch (error) {
+        next(error);
+        
+    }
+}
+
+
 }
