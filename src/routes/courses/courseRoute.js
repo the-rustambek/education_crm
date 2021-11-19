@@ -1,4 +1,4 @@
-const { courseCreatePostController } = require("../../controllers/courseController");
+const { courseCreatePostController, courseGetController } = require("../../controllers/courseController");
 const authMiddleware = require("../../middlewares/authMiddleware");
 const permissionMiddleware = require("../../middlewares/permissionMiddleware");
 
@@ -13,4 +13,7 @@ courseRoute.post("/",expressFileUploadMiddleware({
     safeFileNames:true,
 }),courseCreatePostController);
 
+courseRoute.get("/", courseGetController);
+
 module.exports =  courseRoute;
+

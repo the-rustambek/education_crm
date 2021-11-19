@@ -41,4 +41,33 @@ if(photo){
         }
     }
 
+
+static async courseGetController(req,res,next){
+    try{
+permissionChecker("admin",req.user_permissions, res.error);
+
+        const limit = req.query.limit || 15;
+        const offset = req.query.offset - 1 || 0;
+
+
+        const courses = await req.db.courses.findAll({
+            raw:true,
+            limit,
+            offset: offset * 15,
+
+        });
+        res.status(200).json({
+            ok:true,
+            message: "Courses",
+            data:{
+                courses
+            }
+        })
+    }
+    catch(error){
+        next(error);
+    }
+}
+
+
 }
