@@ -21,3 +21,16 @@
  - Price
  - Length
  
+
+
+ 4. Applicants
+
+    - name
+    - age
+    - gender
+    - source
+    - phone
+    - description
+    - course
+    - status
+    
