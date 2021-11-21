@@ -8,6 +8,7 @@ const applicantRoute = require('express').Router();
 
 applicantRoute.use([authMiddleware,permissionMiddleware]);
 
-applicantRoute.use("/",applicantGetController);
-applicantRoute.use("/course:id",applicantPostController);
+applicantRoute.get("/",applicantGetController);
+applicantRoute.post("/:course_id",applicantPostController);
+
 module.exports = applicantRoute;

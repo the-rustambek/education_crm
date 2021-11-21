@@ -8,11 +8,12 @@ module.exports = class applicantController {
     static async applicantGetController(req, res, next) {
         try {
             permissionChecker(["admin", "operator"], req.user_permissions, res.error);
+
             const limit = req.query.limit || 15;
             const offset = req.query.offset - 1 || 0;
 
             const applicants = await req.db.applicants.findAll({
-                raw: true,
+                raw:true,
                 limit,
                 offset: offset * 15,
 
@@ -44,15 +45,16 @@ module.exports = class applicantController {
             });
 
             if (!course) {
-                throw new res.error(404, "Course not found");
+                throw new res.error(404, "Course is not found");
             }
 
 
-            const data = addApplicantValidation(req.body, res.error);
-            console.log(data);
+            const data = await  addApplicantValidation(req.body, res.error);
+
+            console.log(data,"salomlar");
 
         } catch (error) {
-            console.log(error)
+            console.log(error,"nima gap")
             next(error);
         }
     }
