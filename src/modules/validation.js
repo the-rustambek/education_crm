@@ -80,7 +80,6 @@ module.exports = class Validations {
 					.error(new customError(400, "Name is invalid")),
 				description: joi
 					.string()
-					.required()
 					.error(new customError(400, "Description is invalid"))
 					.min(64),
 				birth_date: joi.date().error(new customError(400, "Date is invalid"))
