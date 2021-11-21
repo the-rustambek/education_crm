@@ -82,17 +82,28 @@ module.exports = class Validations {
 					.string()
 					.error(new customError(400, "Description is invalid"))
 					.min(64),
-				birth_date: joi.date().error(new customError(400, "Date is invalid"))
+				birth_date: joi
+					.date()
+					.error(new customError(400, "Date is invalid"))
 					.required(),
 				phone: joi
 					.string()
 					.required()
 					.error(new customError(400, "Phone is invalid"))
 					.regex(/^998(9[012345789]|6[125679]|7[01234569])[0-9]{7}$/),
-				gender: joi.string().required().valid("male", "female").error(new Error("This option isn't available")),
-				source: joi.string().required().error(new Error("Source is invalid"))	
-			}).validateAsync(data);
+				gender: joi
+					.string()
+					.required()
+					.valid("male", "female")
+					.error(new Error("This option isn't available")),
+				source: joi
+					.string()
+					.required()
+					.error(new Error("Source is invalid")),
+			})
+			.validateAsync(data);
 	}
+
 
 
 	

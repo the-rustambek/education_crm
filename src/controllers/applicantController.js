@@ -54,18 +54,22 @@ module.exports = class applicantController {
             // console.log(data);
 
             const applicant = await req.db.applicants.create({
-                applicant_name: data.name,
-                applicant_gender:data.gender,
-                applicant_birth_date:data.birth_date,
-                applicant_description: data.description,
-                applicant_phone: data.phone,
-                applicant_source: data.source,
-                applicant_status: "waiting",
-                course_id,
-                user_id: req.session.user_id,
-            });
-            console.log(applicant)
+				applicant_name: data.name,
+				applicant_gender: data.gender,
+				applicant_birth_date: data.birth_date,
+				applicant_description: data.description,
+				applicant_phone: data.phone,
+				applicant_source: data.source,
+				applicant_status: "waiting",
+				course_id,
+				user_id: req.session.user_id,
+			});
 
+            console.log(applicant, "salomlar");
+            res.status(201).json({
+				ok: true,
+				message: "Created successfully",
+			});
         } catch (error) {
             console.log(error)
             next(error);
