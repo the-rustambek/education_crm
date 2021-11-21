@@ -51,10 +51,23 @@ module.exports = class applicantController {
 
             const data = await  addApplicantValidation(req.body, res.error);
 
-            console.log(data,"salomlar");
+            // console.log(data);
+
+            const applicant = await req.db.applicants.create({
+                applicant_name: data.name,
+                applicant_gender:data.gender,
+                applicant_birth_date:data.birth_date,
+                applicant_description: data.description,
+                applicant_phone: data.phone,
+                applicant_source: data.source,
+                applicant_status: "waiting",
+                course_id,
+                user_id: req.session.user_id,
+            });
+            console.log(applicant)
 
         } catch (error) {
-            console.log(error,"nima gap")
+            console.log(error)
             next(error);
         }
     }

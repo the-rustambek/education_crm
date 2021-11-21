@@ -20,7 +20,7 @@ module.exports = async (sequelize, Sequelize) =>{
             allowNull:false,
 
         },
-        applicant_sources:{
+        applicant_source:{
             type:Sequelize.STRING,
             allowNull:false,
         },
@@ -31,7 +31,7 @@ module.exports = async (sequelize, Sequelize) =>{
         
         applicant_description:{
             type:Sequelize.TEXT,
-            allowNull:false,
+
         },
         
 
