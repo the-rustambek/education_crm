@@ -17,14 +17,14 @@ module.exports = class applicantController {
                 // raw: true,
                 limit,
                 offset: offset * 15,
-                // include: [
-				// 	{
-				// 		model: req.db.users,
-				// 	},
-				// 	{
-				// 		model: req.db.courses,
-				// 	},
-				// ],
+                include: [
+					{
+						model: req.db.users,
+					},
+					{
+						model: req.db.courses,
+					},
+				],
 
             });
             res.json({
