@@ -34,3 +34,13 @@
     - course
     - status
     
+
+5. Groups
+
+   - name (Autogenerate) 
+   - schedule
+   - time
+   - lesson_duration
+   - course_duration
+   - teacher_id
+      
