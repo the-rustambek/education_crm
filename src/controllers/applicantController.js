@@ -114,6 +114,15 @@ module.exports = class applicantController {
 				applicant_source: data.source,
 				applicant_status: data.status
 
+            },{
+                where:{
+                    applicant_id,
+                }
+            });
+
+            res.status(200).json({
+                ok: true,
+                message: "Updated successfully "
             })
 
         } catch (error) {
