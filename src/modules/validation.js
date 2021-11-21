@@ -124,6 +124,10 @@ module.exports = class Validations {
 					.string()
 					.valid("male", "female")
 					.error(new Error("This option isn't available")),
+				status: joi
+					.string()
+					.valid("waiting","active", "canncelled")
+					.error(new Error("This option isn't available")),
 				source: joi.string().error(new Error("Source is invalid"))
 			}).validateAsync(data);
 				

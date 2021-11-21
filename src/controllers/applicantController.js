@@ -106,7 +106,13 @@ module.exports = class applicantController {
             const data = await updateApplicantValidation(req.body, res.error);
 
             await req.db.applicants.update({
-
+                applicant_name: data.name,
+				applicant_gender: data.gender,
+				applicant_birth_date: data.birth_date,
+				applicant_description: data.description,
+				applicant_phone: data.phone,
+				applicant_source: data.source,
+				applicant_status: data.status
 
             })
 
