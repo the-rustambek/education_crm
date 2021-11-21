@@ -1,6 +1,6 @@
 const permissionChecker = require("../helpers/permissionChecker")
 const {
-    addApplicantValidation
+    addApplicantValidation,updateApplicantValidation
 } = require("../modules/validation")
 
 
@@ -14,8 +14,17 @@ module.exports = class applicantController {
 
             const applicants = await req.db.applicants.findAll({
                 raw:true,
+                // raw: true,
                 limit,
                 offset: offset * 15,
+                // include: [
+				// 	{
+				// 		model: req.db.users,
+				// 	},
+				// 	{
+				// 		model: req.db.courses,
+				// 	},
+				// ],
 
             });
             res.json({
@@ -65,7 +74,7 @@ module.exports = class applicantController {
 				user_id: req.session.user_id,
 			});
 
-            console.log(applicant, "salomlar");
+            console.log(applicant);
             res.status(201).json({
 				ok: true,
 				message: "Created successfully",
@@ -73,6 +82,36 @@ module.exports = class applicantController {
         } catch (error) {
             console.log(error)
             next(error);
+        }
+    }
+
+
+    static async applicantPutController(req, res, next) {
+        try {
+            permissionChecker(["admin", "operator"], req.user_permissions, res.error);
+
+            const applicant_id = req.params.applicant_id;
+
+            const applicant = await req.db.applicants.findOne({
+                where:{
+                    applicant_id
+                },
+            });
+
+
+            if(!applicant){
+                throw new res.error(404, "Applicant not found");
+            }
+
+            const data = await updateApplicantValidation(req.body, res.error);
+
+            await req.db.applicants.update({
+
+
+            })
+
+        } catch (error) {
+            next(error);   
         }
     }
 }
