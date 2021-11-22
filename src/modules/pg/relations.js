@@ -89,5 +89,17 @@ module.exports = async (db) => {
 		}
 	})
 
+	await db.teachers.hasMany(db.groups,{
+		foreignKey:{
+			name: "teacher_id",
+		}
+	})
+
+	await db.groups.belongsTo(db.teachers,{
+		foreignKey: {
+			name:"teacher_id",
+		}
+	})
+
 
 }

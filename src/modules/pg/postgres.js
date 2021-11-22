@@ -25,6 +25,8 @@ module.exports = async  function postgres(){
         db.teachers = await teachersModel(sequelize, Sequelize);
         db.courses =  await courseModel(sequelize,Sequelize);
         db.applicants = await applicantModel(sequelize,Sequelize);
+        db.groups = await groupModel(sequelize,Sequelize);
+        
         await relations(db);
 
         await init(db);
