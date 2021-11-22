@@ -77,7 +77,7 @@ module.exports = class applicantController {
             console.log(applicant);
             res.status(201).json({
 				ok: true,
-				message: "Created successfully",
+				message: "Applicant created successfully",
 			});
         } catch (error) {
             console.log(error)
