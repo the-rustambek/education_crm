@@ -16,7 +16,7 @@ Request body:
 | --------- | -----------    |------ | -------  |
 | name      | Applicant name   | String       |  True        |
 | gender      | Applicant gender ["male","email]   | String       |  True        |
-| birth_date  | Applicant birth_date        | String       | true         |
+| birth_date  | Applicant birth_date        | Date       | true         |
 | description  | Applicant description        | String       | true         |
 | phone  | Applicant phone        | String       | true         |
 | source      | Applicant source   | String       |  True        |
