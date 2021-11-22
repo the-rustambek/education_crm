@@ -12,7 +12,7 @@ module.exports = async (sequelize, Sequelize) => {
             unique:true,
 		},
 		group_time: {
-			type: Sequelize.string(5),
+			type: Sequelize.STRING(5),
 			allowNull: false,
 		},
 		group_status: {

@@ -47,47 +47,50 @@ module.exports = class groupController{
 
 
 
-    static async groupUpdate(req, res, next) {
-        try {
+//     static async groupUpdateController(req, res, next) {
+//         try {
             
-            permissionChecker("admin",req.user_permissions, res.error);
+//             permissionChecker("admin",req.user_permissions, res.error);
 
 
-            const data = await groupCreateValidation(req.body,res.error
-                );
-                const group_id = req.params.group_id;
+//             const data = await groupCreateValidation(req.body,res.error
+//                 );
+//                 const group_id = req.params.group_id;
 
-                const group = await req.db.groups.findOne({
-                    where: {
-                        group_id
-                    }
-                });
+//                 const group = await req.db.groups.findOne({
+//                     where: {
+//                         group_id
+//                     }
+//                 });
 
-                if(!group_id) throw new res.error("Group not found");
+//                 if(!group_id) throw new res.error("Group not found");
 
-                await req.db.groups.update({
+//                 await req.db.groups.update({
 
                     
-                    group_time: data.time,
-                    group_status: data.status,
-                    group_name:getRandomName(8),
-                    group_lesson_duration: data.lesson_duration,
-                    group_course_duration: data.course_duration,
-                    group_schedule: data.schedule,
-                },{
-                    where: {
-                        group_id,
-                    }
-                })
-console.log(group);
+//                     group_time: data.time,
+//                     group_status: data.status,
+//                     group_name:getRandomName(8),
+//                     group_lesson_duration: data.lesson_duration,
+//                     group_course_duration: data.course_duration,
+//                     group_schedule: data.schedule,
+//                 },{
+//                     where: {
+//                         group_id,
+//                     }
+//                 })
+// console.log(group);
 
-res.status(201).json({
-    ok: true,
-    message: "Group updated successfully"
-})
+// res.status(201).json({
+//     ok: true,
+//     message: "Group updated successfully"
+// })
 
-        } catch (error) {
-            next(error);
-        }
-    }
+//         } catch (error) {
+//             next(error);
+//         }
+//     }
+
+
+
 }

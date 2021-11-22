@@ -6,6 +6,8 @@ const teachersModel = require("../../models/teachersModel");
 const userModel = require("../../models/userModel");
 const userPermissionModel = require("../../models/userPermissionModel");
 const applicantModel = require("../../models/applicantModel")
+
+const groupModel = require("../../models/groupModel");
 const init = require("./init");
 const relations = require("./relations");
 
