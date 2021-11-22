@@ -143,8 +143,6 @@ module.exports = class Validations {
 				status: joi.string().required().error(new customError(400,"Status is invalid")),
 				teacher_id: joi.string().required().error(new customError(400, "Teacher id is invalid")),
 				course_id: joi.string().required().error(new customError(400,"Course id is invalid"))
-
-
 			}).validateAsync(data);
 		}
 
