@@ -131,6 +131,23 @@ module.exports = class Validations {
 				source: joi.string().error(new Error("Source is invalid"))
 			}).validateAsync(data);
 				
-	}	
+		};
+
+		static async groupCreateValidation(data, customError){
+
+			return await joi.object({
+				schedule: joi.array().items(joi.string().min(2)).required().error(new customError("Schedule must be array")),
+				time: joi.string().required().error(new customError("Time is invalid")),
+				lesson_duration: joi.number().required().error(new customError("Lesson duration is invalid")), 
+				course_duration:joi.number().required().error(new customError("Course duration is invalid")),
+				status: joi.string().required().error(new customError("Status is invalid")),
+				teacher_id: joi.string().required().error(new customError(400, "Teacher id is invalid")),
+				course_id: joi.string().required().error(new customError(400,"Course id is invalid"))
+
+
+			}).validateAsync(data);
+		}
+
+
 
 }
