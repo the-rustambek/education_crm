@@ -27,13 +27,14 @@ module.exports = class applicantController {
 				],
 
             });
-            res.json({
+            
+            res.status(200).json({
                 ok: true,
-                message: "OK",
+                message: "Applicants",
                 data: {
-                    applicants,
+                    appllicants
                 }
-            })
+            }) 
         } catch (error) {
             console.log(error);
             next(error);
@@ -122,7 +123,7 @@ module.exports = class applicantController {
 
             res.status(200).json({
                 ok: true,
-                message: "Updated successfully "
+                message: "Applicant updated successfully "
             })
 
         } catch (error) {
