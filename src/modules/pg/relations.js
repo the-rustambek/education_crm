@@ -89,17 +89,56 @@ module.exports = async (db) => {
 		}
 	})
 
-	await db.teachers.hasMany(db.groups,{
-		foreignKey:{
-			name: "teacher_id",
-		}
-	})
 
-	await db.groups.belongsTo(db.teachers,{
+    await db.teachers.hasMany(db.groups, {
+        foreignKey: {
+            name: "teacher_id", 
+        }
+    })
+
+    await db.groups.belongsTo(db.teachers, {
+        foreignKey: {
+            name: "teacher_id", 
+        }
+    })
+
+    await db.courses.hasMany(db.groups, {
+        foreignKey: {
+            name: "course_id", 
+        }
+    })
+
+    await db.groups.belongsTo(db.courses, {
+        foreignKey: {
+            name: "course_id", 
+        }
+    })
+
+    await db.group_students.hasMany(db.applicants, {
 		foreignKey: {
-			name:"teacher_id",
-		}
-	})
+			name: "applicant_id",
+			allowNull: false,
+		},
+	});
 
+	await db.applicants.belongsTo(db.group_students, {
+		foreignKey: {
+			name: "applicant_id",
+			allowNull: false,
+		},
+	});
 
+    await db.groups.hasMany(db.group_students, {
+        foreignKey: {
+            name: "group_id",
+            allowNull:false
+        }
+    })
+
+    await db.group_students.belongsTo(db.groups, {
+        foreignKey: {
+            name: "group_id",
+            allowNull:false
+        }
+    })
 }

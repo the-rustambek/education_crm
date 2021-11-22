@@ -6,8 +6,7 @@ module.exports = async function permissionMiddleware(req,res,next){
                 user_id: req.session.user_id,
             },
             include:req.db.permissions,
-        
-        raw:true,
+            raw:true
     });
 
         // console.log(permissions);

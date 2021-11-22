@@ -133,19 +133,50 @@ module.exports = class Validations {
 				
 		};
 
-		static async groupCreateValidation(data, customError){
+	
 
-			return await joi.object({
-				schedule: joi.array().items(joi.string().min(2)).required().error(new customError(400,"Schedule must be array")),
-				time: joi.string().required().error(new customError(400,"Time is invalid")),
-				lesson_duration: joi.number().required().error(new customError(400,"Lesson duration is invalid")), 
-				course_duration:joi.number().required().error(new customError(400,"Course duration is invalid")),
-				status: joi.string().required().error(new customError(400,"Status is invalid")),
-				teacher_id: joi.string().required().error(new customError(400, "Teacher id is invalid")),
-				course_id: joi.string().required().error(new customError(400,"Course id is invalid"))
-			}).validateAsync(data);
+		static async groupCreateValidation(data, customError) {
+			return await joi
+				.object({ 
+					schedule: joi
+					.array()
+					.items(joi.string().min(2))
+					.required()
+					.error(new customError(400, "Schedule must be array")), 
+					time: joi
+						.string()
+						.required()
+						.error(new customError(400, "Time is invalid")), 
+					lesson_duration: joi
+						.number()
+						.required() 
+						.error(new customError(400,"Lesson Duration is invalid")),
+					status: joi
+						.string()
+						.required() 
+						.error(new customError(400,"Status is invalid")),
+					course_duration: joi
+						.number()
+						.required()
+						.error(new customError(400,"Course duration is invalid")),
+					teacher_id: joi
+						.string()
+						.required()
+						.error(new customError(400, "Teacher id invalid")),
+					course_id: joi
+						.string()
+						.required()
+						.error(new customError(400, "Course_id id invalid"))
+				})
+				.validateAsync(data);
 		}
 
 
+		static async addApplicantValidation(data, customError) {
+			return await joi.object({
+				applicant_id: joi.string().error(new customError(400,"Applicant id is invalid")),
+				group_id: joi.string().required().error(new customError(400,"Group id is invalid"))
+			}).validateAsync(data);
+		}
 
 }

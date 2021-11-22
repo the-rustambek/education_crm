@@ -6,8 +6,8 @@ const teachersModel = require("../../models/teachersModel");
 const userModel = require("../../models/userModel");
 const userPermissionModel = require("../../models/userPermissionModel");
 const applicantModel = require("../../models/applicantModel")
-
 const groupModel = require("../../models/groupModel");
+const groupStudentsModel =  require("../../models/groupStudentsModel");
 const init = require("./init");
 const relations = require("./relations");
 
@@ -28,7 +28,9 @@ module.exports = async  function postgres(){
         db.courses =  await courseModel(sequelize,Sequelize);
         db.applicants = await applicantModel(sequelize,Sequelize);
         db.groups = await groupModel(sequelize,Sequelize);
-        
+        db.group_students = await groupStudentsModel(sequelize,Sequelize);
+       
+   
         await relations(db);
 
         await init(db);
