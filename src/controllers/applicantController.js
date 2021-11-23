@@ -14,8 +14,7 @@ module.exports = class applicantController {
             const offset = req.query.offset - 1 || 0;
 
             const applicants = await req.db.applicants.findAll({
-                raw: true,
-                // raw: true,
+
                 limit,
                 offset: offset * 15,
                 include: [{

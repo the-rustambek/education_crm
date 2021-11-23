@@ -1,14 +1,12 @@
  const jwt = require("jsonwebtoken");
 
- module.exports.createToken =   function(user){
-     return jwt.sign(user, process.env.JWT_SECRET,{
+ module.exports.createToken = function (user) {
+     return jwt.sign(user, process.env.JWT_SECRET, {
          expiresIn: "90d",
      });
  };
 
 
- module.exports.verifyToken =   function(token){
+ module.exports.verifyToken = function (token) {
      return jwt.verify(token, process.env.JWT_SECRET);
  };
-
- 

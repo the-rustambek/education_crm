@@ -18,21 +18,21 @@ module.exports = async function authMiddleware(req, res, next) {
             throw new res.error(401, "Token is invalid");
         }
         // console.log(token);
-        
-        const session = await  req.db.sessions.findOne({
-            where:{
-                session_id:token.session_id
+
+        const session = await req.db.sessions.findOne({
+            where: {
+                session_id: token.session_id
             },
             include: req.db.users,
-            raw:true,
+            raw: true,
         })
         // console.log(session);
 
-        if(!session){
+        if (!session) {
             throw new res.error(401, "Session isn't found");
         }
-        
-        req.session=session;
+
+        req.session = session;
         next();
     } catch (error) {
         next(error);

@@ -1,11 +1,11 @@
-module.exports = async function init(db){
+module.exports = async function init(db) {
     const count = await db.users.count();
 
-    if(count === 0){
-        const  admin = await db.users.create({
+    if (count === 0) {
+        const admin = await db.users.create({
             user_username: "admin",
-            user_password:"admin",
-            user_gender:"male",
+            user_password: "admin",
+            user_gender: "male",
             user_name: "admin",
         });
 
@@ -16,11 +16,10 @@ module.exports = async function init(db){
         });
         // console.log(admin_permission);
 
-        const set_permission =  await db.user_permissions.create({
+        const set_permission = await db.user_permissions.create({
             user_id: admin.dataValues.user_id,
             permission_id: admin_permission.dataValues.permission_id,
         });
         // console.log(set_permission);
     };
 };
-

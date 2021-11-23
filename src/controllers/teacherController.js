@@ -49,18 +49,15 @@ module.exports = class teacherController {
 				res.error
 			);
 
-			await req.db.teachers.update(
-				{
-					user_id: data.user_id,
-					teacher_phone: data.phone,
-					teacher_skills: data.skills,
+			await req.db.teachers.update({
+				user_id: data.user_id,
+				teacher_phone: data.phone,
+				teacher_skills: data.skills,
+			}, {
+				where: {
+					teacher_id,
 				},
-				{
-					where: {
-						teacher_id,
-					},
-				}
-			);
+			});
 
 			res.status(200).json({
 				ok: true,
@@ -77,14 +74,12 @@ module.exports = class teacherController {
 			const offset = req.query.offset - 1 || 0;
 			const teachers = await req.db.teachers.findAll({
 				raw: true,
-				include: [
-					{
-						model: req.db.users,
-						attributes: {
-							exclude: ["user_password"],
-						},
+				include: [{
+					model: req.db.users,
+					attributes: {
+						exclude: ["user_password"],
 					},
-				],
+				}, ],
 				limit,
 				offset: offset * limit,
 			});

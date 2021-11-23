@@ -9,7 +9,7 @@ module.exports = async (sequelize, Sequelize) => {
 		group_name: {
 			type: Sequelize.STRING(8),
 			allowNull: false,
-            unique:true,
+			unique: true,
 		},
 		group_time: {
 			type: Sequelize.STRING(5),
@@ -17,8 +17,8 @@ module.exports = async (sequelize, Sequelize) => {
 		},
 		group_status: {
 			type: Sequelize.ENUM,
-			values: ["waiting", "studying","finished", "closed"],
-            defaultValue:"waiting",
+			values: ["waiting", "studying", "finished", "closed"],
+			defaultValue: "waiting",
 		},
 		group_schedule: {
 			type: Sequelize.ARRAY(Sequelize.STRING),
@@ -26,7 +26,7 @@ module.exports = async (sequelize, Sequelize) => {
 		},
 		group_lesson_duration: {
 			type: Sequelize.INTEGER,
-            allowNull: false,
+			allowNull: false,
 		},
 		group_course_duration: {
 			type: Sequelize.INTEGER,

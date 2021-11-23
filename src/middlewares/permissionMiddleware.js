@@ -1,13 +1,13 @@
-module.exports = async function permissionMiddleware(req,res,next){
+module.exports = async function permissionMiddleware(req, res, next) {
     try {
-    
+
         const permissions = await req.db.user_permissions.findAll({
-            where:{
+            where: {
                 user_id: req.session.user_id,
             },
-            include:req.db.permissions,
-            raw:true
-    });
+            include: req.db.permissions,
+            raw: true
+        });
 
         // console.log(permissions);
         req.user_permissions = permissions;
