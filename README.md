@@ -1,4 +1,4 @@
-# EDUCRM  in progress
+# CRM for Educational centers
 
 ## Documentations:
 
