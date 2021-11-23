@@ -78,7 +78,7 @@ Query body:
 
 
 
-#### 2. Group Update Endpoint
+#### 3. Group Update Endpoint
 
 #### Request
 
@@ -111,6 +111,37 @@ Request body:
 `400 -  One of the arguments is incorrect
 500 - Internal Server Error
 `
+
+
+#### 4. Add Applicant To Group Post Endpoint
+
+#### Request
+
+
+SERVER_URL/groups/student  method =  POST
+
+
+Headers: `Content-Type: "application/json"`
+
+
+Request body:
+
+| Name      | Description    | Type  | Required |
+| --------- | -----------    |------ | -------  |
+| applicant_id   | applicant_id   | UUID   |  True        |
+| group_id   | group_id   | UUID   |  True        |
+
+## Response status codes
+
+
+` `201 -  Applicant added to course succesfully`
+`400 -  Applicand_id || group_id is invalid
+500 - Internal Server Error
+`
+
+
+
+
 
 
 
