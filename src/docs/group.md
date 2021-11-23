@@ -8,6 +8,8 @@ SERVER_URL/groups/  method = POST
 
 Headers: `Content-Type: "application/json"`
 
+Permissions:`Admin`
+
 Request body:
 
 
@@ -28,5 +30,52 @@ Request body:
 `201 - Group created successfully `
 `400 - One of the arguments is incorrect`
 `500 - Internal Server Error`  
+
+
+
+
+#### 2. Group Get Endpoint
+
+#### Request
+
+
+SERVER_URL/groups/   method =  GET
+
+Headers: `Content-Type: "application/json"   Authorization: "TOKEN"`
+
+
+Permissions:`Admin`
+
+Query body:
+
+
+
+| Name      | Default    | Type  | Required |
+| --------- | -----------    |------ | -------  |
+| limit   | 15   | Number       |  false        |
+| offset   | 0   | Number       |  false        |
+
+## Response status codes
+
+
+` `200 - OK`
+`500 - Internal server Error 
+
+
+
+
+
+
+{
+    ok:true,
+    message: "Successfully created",
+    data:{
+        groups
+    }
+}
+
+
+
+
 
 

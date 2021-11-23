@@ -112,7 +112,7 @@ res.status(201).json({
                 ]
             })
 
-            res.json({
+            res.status(200).json({
                 ok:true,
                 message: "Groups",
                 data: {
