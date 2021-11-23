@@ -1,6 +1,7 @@
 const permissionChecker = require("../helpers/permissionChecker")
 const {
-    addApplicantValidation,updateApplicantValidation
+    addApplicantValidation,
+    updateApplicantValidation
 } = require("../modules/validation")
 
 
@@ -13,28 +14,27 @@ module.exports = class applicantController {
             const offset = req.query.offset - 1 || 0;
 
             const applicants = await req.db.applicants.findAll({
-                raw:true,
+                raw: true,
                 // raw: true,
                 limit,
                 offset: offset * 15,
-                include: [
-					{
-						model: req.db.users,
-					},
-					{
-						model: req.db.courses,
-					},
-				],
+                include: [{
+                        model: req.db.users,
+                    },
+                    {
+                        model: req.db.courses,
+                    },
+                ],
 
             });
-            
+
             res.status(200).json({
                 ok: true,
                 message: "Applicants",
                 data: {
                     applicants
                 }
-            }) 
+            })
         } catch (error) {
             console.log(error);
             next(error);
@@ -59,27 +59,27 @@ module.exports = class applicantController {
             }
 
 
-            const data = await  addApplicantValidation(req.body, res.error);
+            const data = await addApplicantValidation(req.body, res.error);
 
             // console.log(data);
 
             const applicant = await req.db.applicants.create({
-				applicant_name: data.name,
-				applicant_gender: data.gender,
-				applicant_birth_date: data.birth_date,
-				applicant_description: data.description,
-				applicant_phone: data.phone,
-				applicant_source: data.source,
-				applicant_status: "waiting",
-				course_id,
-				user_id: req.session.user_id,
-			});
+                applicant_name: data.name,
+                applicant_gender: data.gender,
+                applicant_birth_date: data.birth_date,
+                applicant_description: data.description,
+                applicant_phone: data.phone,
+                applicant_source: data.source,
+                applicant_status: "waiting",
+                course_id,
+                user_id: req.session.user_id,
+            });
 
             console.log(applicant);
             res.status(201).json({
-				ok: true,
-				message: "Applicant created successfully",
-			});
+                ok: true,
+                message: "Applicant created successfully",
+            });
         } catch (error) {
             console.log(error)
             next(error);
@@ -94,13 +94,13 @@ module.exports = class applicantController {
             const applicant_id = req.params.applicant_id;
 
             const applicant = await req.db.applicants.findOne({
-                where:{
+                where: {
                     applicant_id
                 },
             });
 
 
-            if(!applicant){
+            if (!applicant) {
                 throw new res.error(404, "Applicant not found");
             }
 
@@ -108,15 +108,15 @@ module.exports = class applicantController {
 
             await req.db.applicants.update({
                 applicant_name: data.name,
-				applicant_gender: data.gender,
-				applicant_birth_date: data.birth_date,
-				applicant_description: data.description,
-				applicant_phone: data.phone,
-				applicant_source: data.source,
-				applicant_status: data.status
+                applicant_gender: data.gender,
+                applicant_birth_date: data.birth_date,
+                applicant_description: data.description,
+                applicant_phone: data.phone,
+                applicant_source: data.source,
+                applicant_status: data.status
 
-            },{
-                where:{
+            }, {
+                where: {
                     applicant_id,
                 }
             });
@@ -127,7 +127,7 @@ module.exports = class applicantController {
             })
 
         } catch (error) {
-            next(error);   
+            next(error);
         }
     }
 }
