@@ -32,7 +32,7 @@ module.exports = class applicantController {
                 ok: true,
                 message: "Applicants",
                 data: {
-                    appllicants
+                    applicants
                 }
             }) 
         } catch (error) {
