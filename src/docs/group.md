@@ -142,6 +142,39 @@ Request body:
 
 
 
+#### 5. Delete Student From Group delete Endpoint
+
+#### Request
+
+
+SERVER_URL/groups/student/:student_id  method = DELETE
+
+Headers: `Content-Type: "application/json"`
+
+
+Request body:
+
+| Name      | Description    | Type  | Required |
+| --------- | -----------    |------ | -------  |
+| student_id   | 	ID of student(must be given from request.params)  | UUID   |  True        |
+
+
+## Response status codes
+
+
+` `201 -  Student deleted succesfully`
+`400 -  Student_id is invalid || Student not found
+500 - Internal Server Error
+`
+
+
+
+
+
+
+
+
+
 
 
 
