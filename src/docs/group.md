@@ -182,3 +182,44 @@ Request body:
 
 
 
+
+#### 6. Group Students GET Endpoint
+
+#### Request
+
+SERVER_URL/groups/students/:group_name method = GET
+
+Headers: `Content-Type: "application/json"   Authorization: "TOKEN"`
+
+
+Permissions:`Admin`
+
+Query body:
+
+
+
+| Name      | Default    | Type  | Required |
+| --------- | -----------    |------ | -------  |
+| limit   | 15   | Number       |  false        |
+| offset   | 0   | Number       |  false        |
+| group_name   | Unique group name(must be given from request.params)| UUID     |  true    |
+
+## Response status codes
+
+
+` `200 - OK`
+`500 - Internal server Error 
+
+
+{
+    ok:true,
+    message: "Successfully created",
+    data:{
+        groups
+    }
+}
+
+
+
+
+
