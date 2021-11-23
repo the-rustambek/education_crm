@@ -34,7 +34,7 @@ module.exports = class groupController{
 
                 res.status(201).json({
                     ok:true,
-                    message: "Group  successfully created",
+                    message: "Group   created successfully",
                     data:{
                         group,
                     }
